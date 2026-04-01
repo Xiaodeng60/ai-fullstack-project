@@ -1,4 +1,4 @@
-//归并排序
+//归并排序算法实现
 //C++
 #include <iostream>
 #include <vector>
