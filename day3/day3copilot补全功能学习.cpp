@@ -2,6 +2,7 @@
 //C++
 #include <iostream>
 #include <vector>
+#include <time.h>
 using namespace std;
 
 void merge(vector<int>& nums, int left, int mid, int right) {
@@ -39,20 +40,28 @@ void mergeSort(vector<int>& nums, int left, int right) {
 }
 
 int main() {
-    vector<int> nums = {12, 11, 13, 5, 6, 7};
-    cout << "Original array: ";
-    for (int num : nums) {
-        cout << num << " ";
+    //record time
+    clock_t start, end;
+    start = clock();
+    //generate 500000numbers
+    srand((unsigned int)time(NULL));
+    vector<int> nums(500000);
+    for (int i = 0; i < 500000; i++) {
+        nums[i] = rand() % 1000000;//生成随机数
     }
-    cout << endl;
+    
+    
 
     mergeSort(nums, 0, nums.size() - 1);
 
+    //cout the first 100 numbers
     cout << "Sorted array: ";
-    for (int num : nums) {
-        cout << num << " ";
+    for (int i = 0; i < 100 && i < nums.size(); i++) {
+        cout << nums[i] << " ";
     }
     cout << endl;
-
+end = clock();
+    double duration = double(end - start) / CLOCKS_PER_SEC;
+    cout << "Time taken: " << duration << " seconds" << endl;
     return 0;
 }
